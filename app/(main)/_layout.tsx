@@ -4,6 +4,7 @@ import DrawerContents from '@/components/layouts/DrawerContents';
 export default function DrawerWithTabsLayout() {
   return (
     <Drawer
+      detachInactiveScreens={false}
       drawerContent={DrawerContents}
       screenOptions={{ headerShown: false, drawerType: 'back' }}>
       <Drawer.Screen name="(tabs)" options={{ title: 'Tabs' }} />
