@@ -11,8 +11,8 @@ import {
   TextStyle,
   StyleSheet,
 } from 'react-native';
-import { colors } from '@/theme';
 import Image from '../Image';
+import { Colors } from '@/theme';
 
 const styles = StyleSheet.create({
   root: {
@@ -43,7 +43,7 @@ function Button({
   style,
   disabled,
   isLoading,
-  loaderColor = colors.white,
+  loaderColor = Colors.light.primary1,
   imageStyle,
   children,
   ...others

@@ -1,13 +1,13 @@
+import { useColorScheme } from '@/hooks';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import useColorScheme from '@/hooks/useColorScheme';
 import 'react-native-reanimated';
 
 export default function Provider({ children }: Readonly<{ children: React.ReactNode }>) {
-  const { isDark } = useColorScheme();
+  const colorScheme = useColorScheme();
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>{children}</ThemeProvider>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>{children}</ThemeProvider>
     </GestureHandlerRootView>
   );
 }

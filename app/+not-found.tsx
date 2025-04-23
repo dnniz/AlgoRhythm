@@ -1,6 +1,6 @@
+import { Colors } from '@/theme';
 import { Link, Stack } from 'expo-router';
 import { StyleSheet, View, Text } from 'react-native';
-import { colors } from '@/theme';
 
 const styles = StyleSheet.create({
   root: {
@@ -8,13 +8,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.lightGrayPurple,
+    backgroundColor: Colors.light.tint,
   },
   link: {
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 22,
-    backgroundColor: colors.lightPurple,
+    backgroundColor: Colors.dark.tint,
     height: 44,
     width: '50%',
   },
