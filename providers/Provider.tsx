@@ -7,7 +7,9 @@ export default function Provider({ children }: Readonly<{ children: React.ReactN
   const colorScheme = useColorScheme();
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>{children}</ThemeProvider>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        {children}
+      </ThemeProvider>
     </GestureHandlerRootView>
   );
 }

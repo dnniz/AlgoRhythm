@@ -16,9 +16,9 @@ const initialUserState = {
   user: undefined,
 };
 
-export const useUserStore = create<UserState>((set) => ({
+export const useUserStore = create<UserState>(set => ({
   ...initialUserState,
-  setLoggedIn: (loggedIn) => set({ checked: true, loggedIn }),
-  setUser: (user) => set({ user }),
+  setLoggedIn: loggedIn => set({ checked: true, loggedIn }),
+  setUser: user => set({ user }),
   reset: () => set(initialUserState),
 }));

@@ -28,7 +28,7 @@ function Router() {
         setOpen(true);
       } catch {
         getPersistData<User>(DataPersistKeys.USER)
-          .then((user) => {
+          .then(user => {
             if (user) setUser(user);
             setLoggedIn(!!user);
           })

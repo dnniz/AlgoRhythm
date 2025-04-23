@@ -1,7 +1,6 @@
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { StyleSheet, SafeAreaView, View, Text, ViewProps } from 'react-native';
-import { type TextProps  } from 'react-native';
-
+import { type TextProps } from 'react-native';
 
 const styles = StyleSheet.create({
   root: {
@@ -18,8 +17,17 @@ export type ThemedViewProps = ViewProps & {
   gothColor?: string;
 };
 
-export default function DrawerContents({ style, lightColor, darkColor, gothColor, ...otherProps }: ThemedViewProps) {
-  const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor, goth: gothColor }, 'background');
+export default function DrawerContents({
+  style,
+  lightColor,
+  darkColor,
+  gothColor,
+  ...otherProps
+}: ThemedViewProps) {
+  const backgroundColor = useThemeColor(
+    { light: lightColor, dark: darkColor, goth: gothColor },
+    'background',
+  );
   const textColor = useThemeColor({ light: lightColor, dark: darkColor, goth: gothColor }, 'text');
 
   return (

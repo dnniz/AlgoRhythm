@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  Pressable,
-  useWindowDimensions,
-  BackHandler,
-} from "react-native";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import { router, useFocusEffect } from "expo-router";
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, Pressable, useWindowDimensions, BackHandler } from 'react-native';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import { router, useFocusEffect } from 'expo-router';
 import Animated, {
   useAnimatedStyle,
   useDerivedValue,
@@ -15,16 +9,16 @@ import Animated, {
   withDelay,
   withSpring,
   withTiming,
-} from "react-native-reanimated";
-import { useNavigationState } from "@react-navigation/native";
-import { useThemeColor } from "@/hooks/useThemeColor";
+} from 'react-native-reanimated';
+import { useNavigationState } from '@react-navigation/native';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 type ValidPaths =
-  | "/"
-  | "/onboarding/step-1"
-  | "/onboarding/step-2"
-  | "/onboarding/step-3"
-  | "/onboarding/welcome";
+  | '/'
+  | '/onboarding/step-1'
+  | '/onboarding/step-2'
+  | '/onboarding/step-3'
+  | '/onboarding/welcome';
 interface OnBoardingLayoutProps {
   children: React.ReactNode;
   bgColor?: string;
@@ -49,43 +43,39 @@ const OnBoardingLayout: React.FC<OnBoardingLayoutProps> = ({
   nextBgColor,
   bgColor,
   nextTextColor,
-  nextText = "NEXT",
+  nextText = 'NEXT',
   nextHref,
   complete,
 }) => {
-  const bg = useThemeColor({}, "background");
-  const text = useThemeColor({}, "text");
+  const bg = useThemeColor({}, 'background');
+  const text = useThemeColor({}, 'text');
   const backgroundColor = bgColor ? bgColor : bg;
-  const nexBgColor = nextBgColor ? nextBgColor : text + "90";
+  const nexBgColor = nextBgColor ? nextBgColor : text + '90';
   const nextColor = nextTextColor ? nextTextColor : bg;
   const [goingBack, setGoingBack] = useState(false);
   const { width } = useWindowDimensions();
   const scale = useSharedValue(1);
-  const screenStack = useNavigationState((state) => state.routes);
+  const screenStack = useNavigationState(state => state.routes);
   const initial = screenStack.length === 1; // Added to know if it's the first screen
 
   const normalScale = useDerivedValue(() => {
     return Math.min(1, scale.value - 1);
   });
 
-  const dynamic_duration = initial
-    ? 0
-    : goingBack
-    ? 650
-    : Math.min(550, Math.max(width, 800));
+  const dynamic_duration = initial ? 0 : goingBack ? 650 : Math.min(550, Math.max(width, 800));
 
   const TIMING_CONFIG_DYNAMIC = React.useMemo(
     () => ({
       duration: dynamic_duration,
     }),
-    [dynamic_duration]
+    [dynamic_duration],
   );
 
   const TIMING_CONFIG = React.useMemo(
     () => ({
       duration: initial ? 0 : 600,
     }),
-    [initial]
+    [initial],
   );
 
   useEffect(() => {
@@ -104,14 +94,8 @@ const OnBoardingLayout: React.FC<OnBoardingLayoutProps> = ({
     transform: [
       {
         scale: goingBack
-          ? withTiming(
-              initial ? 1 : Math.max(0, normalScale.value),
-              TIMING_CONFIG
-            )
-          : withSpring(
-              initial ? 1 : Math.max(0, normalScale.value),
-              SPRING_CONFIG
-            ),
+          ? withTiming(initial ? 1 : Math.max(0, normalScale.value), TIMING_CONFIG)
+          : withSpring(initial ? 1 : Math.max(0, normalScale.value), SPRING_CONFIG),
       },
     ],
     opacity: goingBack
@@ -135,10 +119,7 @@ const OnBoardingLayout: React.FC<OnBoardingLayoutProps> = ({
   }, [initial, complete, goingBack, scale, TIMING_CONFIG_DYNAMIC.duration]);
 
   useFocusEffect(() => {
-    const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      handleBack
-    );
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', handleBack);
     return () => backHandler.remove();
   });
 
@@ -154,9 +135,7 @@ const OnBoardingLayout: React.FC<OnBoardingLayoutProps> = ({
             animatedStyle,
           ]}
         />
-        <Animated.View style={[styles.content, contentAnimatedStyle]}>
-          {children}
-        </Animated.View>
+        <Animated.View style={[styles.content, contentAnimatedStyle]}>{children}</Animated.View>
         {nextHref && (
           <Animated.View
             style={[
@@ -166,15 +145,9 @@ const OnBoardingLayout: React.FC<OnBoardingLayoutProps> = ({
                 transform: [{ scale: 1 }],
               },
               btnAnimatedStyle,
-            ]}
-          >
-            <Pressable
-              onPress={() => router.push(nextHref)}
-              style={styles.nextBtn}
-            >
-              <Text style={[styles.nextText, { color: nextColor }]}>
-                {nextText}
-              </Text>
+            ]}>
+            <Pressable onPress={() => router.push(nextHref)} style={styles.nextBtn}>
+              <Text style={[styles.nextText, { color: nextColor }]}>{nextText}</Text>
               <FontAwesome6
                 name="arrow-right"
                 color={nextColor}
@@ -192,50 +165,49 @@ const OnBoardingLayout: React.FC<OnBoardingLayoutProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   content: {
     flex: 1,
     paddingHorizontal: 20,
-    transformOrigin: "140% 60%",
+    transformOrigin: '140% 60%',
     maxWidth: 400,
-    width: "100%",
-    alignSelf: "center",
+    width: '100%',
+    alignSelf: 'center',
   },
   next: {
-    position: "absolute",
+    position: 'absolute',
     bottom: -20,
     right: -45,
     width: 200,
     aspectRatio: 1,
-    borderRadius: "50%",
+    borderRadius: '50%',
     paddingBottom: 10,
     paddingRight: 10,
-    transformOrigin: "bottom right",
+    transformOrigin: 'bottom right',
   },
   nextBtn: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   nextText: {
     paddingRight: 6,
     fontSize: 18,
-    fontWeight: "600",
-    fontFamily: "Roboto_700Bold",
+    fontWeight: '600',
+    fontFamily: 'Roboto_700Bold',
   },
   overlay: {
-    position: "absolute",
+    position: 'absolute',
     bottom: -20,
     right: -45,
     width: 200,
     aspectRatio: 1,
-    transformOrigin: "bottom right",
-    borderRadius: "50%",
+    transformOrigin: 'bottom right',
+    borderRadius: '50%',
     borderBottomRightRadius: 0,
   },
 });
-
 
 export default OnBoardingLayout;

@@ -1,9 +1,9 @@
-import { Stack } from "expo-router";
-import React from "react";
+import { Stack } from 'expo-router';
+import React from 'react';
 
 const OPTION_CONFIG = {
-  presentation: "transparentModal" as const,
-  animation: "none" as const,
+  presentation: 'transparentModal' as const,
+  animation: 'none' as const,
 };
 
 export default function Layout() {

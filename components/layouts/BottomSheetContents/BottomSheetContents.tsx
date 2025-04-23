@@ -74,7 +74,7 @@ export default function BottomSheetContents({ onClose }: WelcomeBottomSheetConte
         You have successfully spin up the React Native Boilerplate project in the
         <Text style={{ fontFamily: fonts.openSan.bold }}>{` ${config.env} `}</Text>environment 🚀
       </Text>
-      <Text style={[styles.subtitle, { marginBottom: 8 },{ color: Colors.goth.text }]}>
+      <Text style={[styles.subtitle, { marginBottom: 8 }, { color: Colors.goth.text }]}>
         Injected Environmental Variables:
       </Text>
       {Object.entries(config).map(([key, value]) => (

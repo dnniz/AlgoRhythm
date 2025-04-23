@@ -30,17 +30,16 @@ const styles = StyleSheet.create({
 export default function Details() {
   const router = useRouter();
   const { from } = useLocalSearchParams();
-  const backgroundColor = useThemeColor({}, "background");
-  const text = useThemeColor({}, "text");
-  const tint = useThemeColor({}, "tint");
+  const backgroundColor = useThemeColor({}, 'background');
+  const text = useThemeColor({}, 'text');
+  const tint = useThemeColor({}, 'tint');
 
   return (
     <View style={[styles.root, { backgroundColor }]}>
-      <Text
-        style={[styles.title,{ color: text }]}>{`Details (from ${from})`}</Text>
+      <Text style={[styles.title, { color: text }]}>{`Details (from ${from})`}</Text>
       <GradientButton
         title="Go back to Home"
-        titleStyle={[styles.buttonTitle, { color:text }]}
+        titleStyle={[styles.buttonTitle, { color: text }]}
         style={styles.button}
         gradientBackgroundProps={{
           colors: [tint, text],

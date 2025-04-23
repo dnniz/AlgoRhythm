@@ -11,37 +11,37 @@
 //   transparent: 'transparent',
 // };
 
-const tintColorLight = "#0a7ea4";
-const tintColorDark = "#fff";
-const tintColorGoth = "#9388db";
+const tintColorLight = '#0a7ea4';
+const tintColorDark = '#fff';
+const tintColorGoth = '#9388db';
 
 const DEFAULTS = {
-  primary1: "#8AADBC",
-  primary2: "#EBD9BF",
-  inactiveBg: "#797777",
+  primary1: '#8AADBC',
+  primary2: '#EBD9BF',
+  inactiveBg: '#797777',
   // inactiveDark:""
 };
 
 export const Colors = {
   light: {
-    text: "#11181C",
-    background: "#fff",
-    inactiveColor: "#95a5a5",
+    text: '#11181C',
+    background: '#fff',
+    inactiveColor: '#95a5a5',
     tint: tintColorLight,
     ...DEFAULTS,
   },
   dark: {
-    text: "#ECEDEE",
-    background: "#151718",
-    inactiveColor: "#333737",
+    text: '#ECEDEE',
+    background: '#151718',
+    inactiveColor: '#333737',
     tint: tintColorDark,
     ...DEFAULTS,
   },
-  goth:{
-    text: "#ECEDEE",
-    background: "#231d54",
-    inactiveColor: "#2f2b40",
+  goth: {
+    text: '#ECEDEE',
+    background: '#231d54',
+    inactiveColor: '#2f2b40',
     tint: tintColorGoth,
     ...DEFAULTS,
-  }
+  },
 };

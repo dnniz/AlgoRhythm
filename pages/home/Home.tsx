@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
 
 export default function Home() {
   const router = useRouter();
-  const backgroundColor = useThemeColor({}, "background");
-  const text = useThemeColor({}, "text");
-  const primary1 = useThemeColor({}, "primary1");
+  const backgroundColor = useThemeColor({}, 'background');
+  const text = useThemeColor({}, 'text');
+  const primary1 = useThemeColor({}, 'primary1');
 
   return (
     <View style={[styles.root, { backgroundColor }]}>

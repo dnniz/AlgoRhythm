@@ -9,8 +9,8 @@ export default function HomeStackLayout() {
   const navigation = useNavigation();
   const toggleDrawer = () => navigation.dispatch(DrawerActions.toggleDrawer());
 
-  const text = useThemeColor({}, "text");
-  const backgroundColor = useThemeColor({}, "background");
+  const text = useThemeColor({}, 'text');
+  const backgroundColor = useThemeColor({}, 'background');
 
   return (
     <Stack

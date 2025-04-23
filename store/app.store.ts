@@ -9,10 +9,10 @@ const initialState = {
   colorScheme: 'light',
 };
 
-export const useAppStore = create<AppStore>((set) => ({
+export const useAppStore = create<AppStore>(set => ({
   ...initialState,
   toggleColorScheme: () =>
-    set((state) => ({
+    set(state => ({
       colorScheme: state.colorScheme === 'light' ? 'dark' : 'light',
     })),
 }));

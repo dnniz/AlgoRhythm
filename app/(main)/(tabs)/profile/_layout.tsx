@@ -8,8 +8,8 @@ import { useColorScheme, useThemeColor } from '@/hooks';
 
 export default function ProfileStackLayout() {
   const navigation = useNavigation();
-  const tint = useThemeColor({}, "tint");
-  const bg = useThemeColor({}, "background");
+  const tint = useThemeColor({}, 'tint');
+  const bg = useThemeColor({}, 'background');
 
   const toggleDrawer = () => navigation.dispatch(DrawerActions.toggleDrawer());
   return (
