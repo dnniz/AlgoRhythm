@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
 export default function Home() {
   const router = useRouter();
   const backgroundColor = useThemeColor({}, 'background');
+  const tint = useThemeColor({}, 'tint');
   const text = useThemeColor({}, 'text');
   const primary1 = useThemeColor({}, 'primary1');
 
@@ -39,10 +40,16 @@ export default function Home() {
       <Button
         title="Go to Details"
         titleStyle={[styles.buttonTitle, { color: text }]}
-        style={[styles.button, { backgroundColor }]}
+        style={[styles.button, { backgroundColor: tint }]}
         onPress={() =>
           router.push({ pathname: '(main)/(tabs)/home/details', params: { from: 'Home' } })
         }
+      />
+      <Button
+        title="Go to OnBoarding"
+        titleStyle={[styles.buttonTitle, { color: text }]}
+        style={[styles.button, { backgroundColor: tint }]}
+        onPress={() => router.push({ pathname: '(onboarding)', params: { from: 'Home' } })}
       />
     </View>
   );

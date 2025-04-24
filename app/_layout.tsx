@@ -1,21 +1,20 @@
 import * as SplashScreen from 'expo-splash-screen';
 import { useDataPersist, DataPersistKeys } from '@/hooks';
 import { loadImages, loadFonts } from '@/theme';
-import { useRouter, Stack } from 'expo-router';
-import { useState, useEffect } from 'react';
+import { useRouter, Stack, Slot } from 'expo-router';
+import { useState, useEffect, Fragment } from 'react';
 import { useUserStore } from '@/store/user.store';
 import { fetchUser } from '@/services';
 import Provider from '@/providers';
 import { User } from '@/types';
+import { StatusBar } from 'expo-status-bar';
 
 SplashScreen.preventAutoHideAsync();
 
 function Router() {
   const router = useRouter();
-  const { setLoggedIn, setUser } = useUserStore();
+  const { setLoggedIn, setUser, loggedIn } = useUserStore();
   const { setPersistData, getPersistData } = useDataPersist();
-  const [isOpen, setOpen] = useState(false);
-
   useEffect(() => {
     async function preload() {
       try {
@@ -25,7 +24,6 @@ function Router() {
         setLoggedIn(!!user);
         if (user) setPersistData<User>(DataPersistKeys.USER, user);
         SplashScreen.hideAsync();
-        setOpen(true);
       } catch {
         getPersistData<User>(DataPersistKeys.USER)
           .then(user => {
@@ -34,17 +32,25 @@ function Router() {
           })
           .finally(() => {
             SplashScreen.hideAsync();
-            setOpen(true);
           });
       }
     }
     preload();
   }, []);
 
+  useEffect(() => {
+    if (loggedIn) {
+      router.push('/(main)/home');
+    } else {
+      router.push('/(onboarding)');
+    }
+  }, [router]);
+
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="onboarding" />
-    </Stack>
+    <Fragment>
+      <Slot />
+      <StatusBar style="light" />
+    </Fragment>
   );
 }
 
