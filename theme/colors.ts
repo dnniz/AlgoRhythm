@@ -15,6 +15,8 @@ export const Colors = {
     background: '#C2D8ED',
     inactiveColor: '#95a5a5',
     tint: tintColorLight,
+    gradientColor1: '#5A63D6',
+    gradientColor2: '#9A6268',
     ...DEFAULTS,
   },
   dark: {
@@ -22,6 +24,8 @@ export const Colors = {
     background: '#151718',
     inactiveColor: '#333737',
     tint: tintColorDark,
+    gradientColor1: '#B5C4EA',
+    gradientColor2: '#9694B5',
     ...DEFAULTS,
   },
   goth: {
@@ -29,6 +33,8 @@ export const Colors = {
     background: '#231d54',
     inactiveColor: '#2f2b40',
     tint: tintColorGoth,
+    gradientColor1: '#B5C4EA',
+    gradientColor2: '#9694B5',
     ...DEFAULTS,
   },
 };

@@ -12,6 +12,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useNavigationState } from '@react-navigation/native';
 import { useThemeColor } from '@/hooks/useThemeColor';
+import { LinearGradient } from 'expo-linear-gradient';
 
 type ValidPaths =
   | '(onboarding)'
@@ -28,6 +29,8 @@ interface OnBoardingLayoutProps {
   nextText?: string;
   nextHref?: ValidPaths;
   complete?: boolean;
+  linearGradient?: boolean;
+  linearGradientColors?: [string, string];
 }
 
 const SPRING_CONFIG = {
@@ -47,12 +50,18 @@ const OnBoardingLayout: React.FC<OnBoardingLayoutProps> = ({
   nextText = 'NEXT',
   nextHref,
   complete,
+  linearGradient = false,
 }) => {
   const bg = useThemeColor({}, 'background');
+  const gradientColor1 = useThemeColor({}, 'gradientColor1');
+  const gradientColor2 = useThemeColor({}, 'gradientColor2');
   const text = useThemeColor({}, 'text');
   const backgroundColor = bgColor ? bgColor : bg;
   const nexBgColor = nextBgColor ? nextBgColor : text + '90';
   const nextColor = nextTextColor ? nextTextColor : bg;
+
+
+
   const [goingBack, setGoingBack] = useState(false);
   const { width } = useWindowDimensions();
   const scale = useSharedValue(1);
@@ -127,15 +136,26 @@ const OnBoardingLayout: React.FC<OnBoardingLayoutProps> = ({
   return (
     <Pressable style={{ flex: 1 }} onPress={handleBack}>
       <Animated.View style={[styles.container]}>
-        <Animated.View
-          style={[
-            styles.overlay,
-            {
-              backgroundColor,
-            },
-            animatedStyle,
-          ]}
-        />
+        {linearGradient ? (
+          <Animated.View style={[styles.overlay, animatedStyle]}>
+            <LinearGradient
+              colors={[gradientColor1, gradientColor2]}
+              start={{ x: 0.8, y: 0 }}
+              end={{ x: 0.8, y: 1 }}
+              style={StyleSheet.absoluteFill}
+            />
+          </Animated.View>
+        ) : (
+          <Animated.View
+            style={[
+              styles.overlay,
+              {
+                backgroundColor,
+              },
+              animatedStyle,
+            ]}
+          />
+        )}
         <Animated.View style={[styles.content, contentAnimatedStyle]}>{children}</Animated.View>
         {nextHref && (
           <Animated.View

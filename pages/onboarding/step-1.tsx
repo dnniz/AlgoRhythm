@@ -9,7 +9,7 @@ import OnBoardingLayout from '@/components/elements/OnBoardingLayout';
 export default function OnboardingStepOne() {
   const contrast = useThemeColor({}, 'contrast');
   return (
-    <OnBoardingLayout nextBgColor={contrast} nextHref="(onboarding)/step-2">
+    <OnBoardingLayout nextBgColor={contrast} linearGradient nextHref="(onboarding)/step-2">
       <View style={generalStyles.container}>
         <Image
           source={require('../../assets/images/react-logo3x.png')}
