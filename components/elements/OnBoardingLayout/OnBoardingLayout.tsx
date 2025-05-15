@@ -13,13 +13,6 @@ import Animated, {
 import { useNavigationState } from '@react-navigation/native';
 import { useThemeColor } from '@/hooks/useThemeColor';
 
-// type ValidPaths =
-//   | '/'
-//   | '/onboarding/step-1'
-//   | '/onboarding/step-2'
-//   | '/onboarding/step-3'
-//   | '/onboarding/welcome';
-
 type ValidPaths =
   | '(onboarding)'
   | '(onboarding)/step-1'

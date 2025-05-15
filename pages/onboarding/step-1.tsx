@@ -7,9 +7,9 @@ import { useColorScheme, useThemeColor } from '@/hooks';
 import OnBoardingLayout from '@/components/elements/OnBoardingLayout';
 
 export default function OnboardingStepOne() {
-  const primary1 = useThemeColor({}, 'primary1');
+  const contrast = useThemeColor({}, 'contrast');
   return (
-    <OnBoardingLayout nextBgColor={primary1} nextHref="(onboarding)/step-2">
+    <OnBoardingLayout nextBgColor={contrast} nextHref="(onboarding)/step-2">
       <View style={generalStyles.container}>
         <Image
           source={require('../../assets/images/react-logo3x.png')}

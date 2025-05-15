@@ -1,6 +1,5 @@
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { StyleSheet, SafeAreaView, View, Text, ViewProps } from 'react-native';
-import { type TextProps } from 'react-native';
 
 const styles = StyleSheet.create({
   root: {
